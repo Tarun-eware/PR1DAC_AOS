@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("maven-publish")
 }
 
 android {
@@ -32,6 +33,19 @@ android {
         jvmTarget = "1.8"
     }
 }
+
+publishing{
+    publications{
+        create<MavenPublication>("release"){
+            from(components.findByName("release"))
+
+            groupId = "com.github.Tarun-eware"
+            artifactId = "PR1DAC_AOS"
+            version = "v0.0.2"
+        }
+    }
+}
+
 
 dependencies {
 
